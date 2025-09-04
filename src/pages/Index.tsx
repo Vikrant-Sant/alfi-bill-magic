@@ -1,77 +1,33 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 import { 
-  CheckCircle, 
   Clock, 
   DollarSign, 
   Mail, 
-  Camera, 
   Zap, 
-  Shield, 
   TrendingUp,
-  ArrowRight,
-  Star
+  ArrowRight
 } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration.png";
 
 const Index = () => {
-  const features = [
-    {
-      icon: <Mail className="h-8 w-8 text-primary" />,
-      title: "Email Processing",
-      description: "Automatically extract bill details from any email format"
-    },
-    {
-      icon: <Camera className="h-8 w-8 text-primary" />,
-      title: "Photo Recognition", 
-      description: "Snap a photo of any bill and let AI handle the rest"
-    },
-    {
-      icon: <Zap className="h-8 w-8 text-primary" />,
-      title: "Instant Payment",
-      description: "Secure, automated payments processed immediately"
-    },
-    {
-      icon: <Shield className="h-8 w-8 text-primary" />,
-      title: "Bank-Level Security",
-      description: "Enterprise-grade encryption and compliance standards"
-    }
-  ];
-
   const problems = [
     {
       icon: <Clock className="h-6 w-6 text-destructive" />,
-      title: "Wasted Time & Resources",
-      description: "Businesses waste hours per month manually processing vendor payments that don't fit into standard autopay systems"
+      title: "Wasted Time",
+      description: "Hours spent manually processing irregular bills that don't fit autopay"
     },
     {
       icon: <TrendingUp className="h-6 w-6 text-destructive" />,
-      title: "Clunky Payment Experiences", 
-      description: "Individuals struggle with tuition, medical, government, and other ad-hoc bills through outdated portals requiring multiple steps"
+      title: "Clunky Portals", 
+      description: "Outdated payment systems requiring multiple steps for simple transactions"
     },
     {
       icon: <DollarSign className="h-6 w-6 text-destructive" />,
-      title: "Costly Consequences",
-      description: "Manual entry leads to missed due dates, late fees, and administrative overhead that impacts bottom lines"
-    }
-  ];
-
-  const steps = [
-    {
-      step: "01",
-      title: "Send or Snap", 
-      description: "Forward bill emails to Alfi or take a photo of any physical bill"
-    },
-    {
-      step: "02",
-      title: "AI Processing",
-      description: "Our AI extracts all payment details, verifies accuracy, and schedules payment"
-    },
-    {
-      step: "03",
-      title: "Auto Payment",
-      description: "Bills are paid automatically on time, every time, with full tracking and receipts"
+      title: "Late Fees",
+      description: "Manual processing leads to missed deadlines and costly penalties"
     }
   ];
 
@@ -86,12 +42,6 @@ const Index = () => {
             </div>
             <span className="text-xl font-bold text-foreground">Alfi</span>
           </div>
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Features</a>
-            <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">How it Works</a>
-            <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
-            <Button variant="outline" size="sm">Sign In</Button>
-          </div>
         </nav>
       </header>
 
@@ -101,40 +51,45 @@ const Index = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <Badge variant="secondary" className="text-primary">
-                AI-Powered Bill Management
+                Coming Soon
               </Badge>
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-foreground">
                 Your AI Bill 
                 <span className="bg-gradient-primary bg-clip-text text-transparent"> Butler</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Handling every irregular bill from email or photo and paying it automatically. 
+                Automatically handle every irregular bill from email or photo. 
                 Never miss a payment or waste time on manual processing again.
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="xl" className="flex items-center">
-                Get Started Free <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="xl">
-                Schedule Demo
-              </Button>
+            <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row gap-3 max-w-md">
+                <Input 
+                  type="email" 
+                  placeholder="Enter your email" 
+                  className="flex-1"
+                />
+                <Button variant="hero" className="flex items-center">
+                  Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Be the first to know when we launch. No spam, ever.
+              </p>
             </div>
 
-            <div className="flex items-center space-x-6 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-1">
-                <CheckCircle className="h-4 w-4 text-primary" />
-                <span>Free 30-day trial</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <CheckCircle className="h-4 w-4 text-primary" />
-                <span>No setup fees</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <CheckCircle className="h-4 w-4 text-primary" />
-                <span>Cancel anytime</span>
-              </div>
+            <div className="pt-4">
+              <p className="text-sm text-muted-foreground mb-2">
+                Want to learn more? Reach out directly:
+              </p>
+              <a 
+                href="mailto:hello@alfi.ai" 
+                className="inline-flex items-center text-primary hover:text-primary-glow transition-colors"
+              >
+                <Mail className="h-4 w-4 mr-2" />
+                hello@alfi.ai
+              </a>
             </div>
           </div>
 
@@ -142,7 +97,7 @@ const Index = () => {
             <div className="absolute inset-0 bg-gradient-hero rounded-3xl blur-3xl opacity-30"></div>
             <img 
               src={heroIllustration} 
-              alt="AI Bill Butler automation illustration" 
+              alt="AI Bill Butler automation concept" 
               className="relative z-10 w-full h-auto rounded-2xl shadow-xl"
             />
           </div>
@@ -153,25 +108,25 @@ const Index = () => {
       <section className="container mx-auto px-4 py-20">
         <div className="text-center space-y-4 mb-16">
           <Badge variant="secondary" className="text-destructive">
-            The Problem with Irregular Bills
+            The Problem
           </Badge>
           <h2 className="text-4xl font-bold text-foreground">
-            Manual Bill Processing Is Broken
+            Irregular Bills Are a Pain
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Autopay and credit cards only cover a fraction of payment scenarios, leaving a significant gap for one-off, irregular bills that require manual intervention.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Autopay only works for regular bills. Everything else requires manual work.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {problems.map((problem, index) => (
-            <Card key={index} className="border border-destructive/20 bg-card/50 backdrop-blur-sm">
+            <Card key={index} className="text-center border-border/50">
               <CardContent className="p-6 space-y-4">
-                <div className="flex items-center space-x-3">
+                <div className="flex justify-center">
                   {problem.icon}
-                  <h3 className="font-semibold text-foreground">{problem.title}</h3>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">
+                <h3 className="font-semibold text-foreground">{problem.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {problem.description}
                 </p>
               </CardContent>
@@ -180,86 +135,32 @@ const Index = () => {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section id="how-it-works" className="container mx-auto px-4 py-20">
-        <div className="text-center space-y-4 mb-16">
-          <Badge variant="secondary" className="text-primary">
-            Simple Process
-          </Badge>
-          <h2 className="text-4xl font-bold text-foreground">
-            How Alfi Works
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Three simple steps to automate your entire bill payment process
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {steps.map((step, index) => (
-            <div key={index} className="text-center space-y-4 relative">
-              <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-white">{step.step}</span>
-              </div>
-              <h3 className="text-xl font-semibold text-foreground">{step.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {step.description}
-              </p>
-              {index < steps.length - 1 && (
-                <ArrowRight className="hidden md:block absolute top-8 -right-4 h-6 w-6 text-muted-foreground" />
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Features */}
-      <section id="features" className="container mx-auto px-4 py-20">
-        <div className="text-center space-y-4 mb-16">
-          <Badge variant="secondary" className="text-primary">
-            Powerful Features
-          </Badge>
-          <h2 className="text-4xl font-bold text-foreground">
-            Everything You Need to Automate Bills
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-border/50">
-              <CardContent className="p-6 space-y-4">
-                <div className="p-3 bg-accent/50 rounded-lg w-fit group-hover:bg-accent transition-colors">
-                  {feature.icon}
-                </div>
-                <h3 className="font-semibold text-foreground">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Trust Section */}
+      {/* Solution Preview */}
       <section className="container mx-auto px-4 py-20">
-        <div className="bg-gradient-hero rounded-3xl p-12 text-center">
-          <div className="max-w-3xl mx-auto space-y-8">
+        <div className="bg-gradient-hero rounded-3xl p-12 text-center max-w-4xl mx-auto">
+          <div className="space-y-6">
+            <Badge variant="secondary" className="text-primary">
+              The Solution
+            </Badge>
             <h2 className="text-3xl font-bold text-foreground">
-              Trusted by Forward-Thinking Businesses
+              AI That Handles Any Bill
             </h2>
-            <div className="flex justify-center items-center space-x-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-6 w-6 fill-primary text-primary" />
-              ))}
-              <span className="ml-2 text-lg font-semibold text-foreground">4.9/5</span>
-            </div>
-            <p className="text-muted-foreground text-lg">
-              "Alfi has saved us 15+ hours per month and eliminated late payment fees entirely. 
-              It's like having a dedicated accounts payable assistant that never sleeps."
-            </p>
-            <div className="text-center">
-              <p className="font-semibold text-foreground">Sarah Chen</p>
-              <p className="text-muted-foreground">CFO, TechStart Inc.</p>
+            <div className="grid md:grid-cols-3 gap-8 mt-8">
+              <div className="space-y-2">
+                <Mail className="h-8 w-8 text-primary mx-auto" />
+                <h3 className="font-semibold text-foreground">From Email</h3>
+                <p className="text-sm text-muted-foreground">Forward any bill email</p>
+              </div>
+              <div className="space-y-2">
+                <Zap className="h-8 w-8 text-primary mx-auto" />
+                <h3 className="font-semibold text-foreground">AI Processing</h3>
+                <p className="text-sm text-muted-foreground">Extract & verify details</p>
+              </div>
+              <div className="space-y-2">
+                <DollarSign className="h-8 w-8 text-primary mx-auto" />
+                <h3 className="font-semibold text-foreground">Auto Payment</h3>
+                <p className="text-sm text-muted-foreground">Paid on time, every time</p>
+              </div>
             </div>
           </div>
         </div>
@@ -267,66 +168,52 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-20">
-        <div className="text-center space-y-8">
+        <div className="text-center space-y-8 max-w-2xl mx-auto">
           <h2 className="text-4xl font-bold text-foreground">
             Ready to Automate Your Bills?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of businesses and individuals who never worry about bill payments anymore.
+          <p className="text-lg text-muted-foreground">
+            Join our waitlist to be notified when Alfi launches.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="premium" size="xl" className="flex items-center">
-              Start Free Trial <ArrowRight className="ml-2 h-5 w-5" />
+          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <Input 
+              type="email" 
+              placeholder="Enter your email" 
+              className="flex-1"
+            />
+            <Button variant="premium" className="flex items-center">
+              Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button variant="outline" size="xl">
-              Contact Sales
-            </Button>
+          </div>
+          <div className="pt-4">
+            <p className="text-muted-foreground text-sm mb-2">
+              Questions? We'd love to hear from you:
+            </p>
+            <a 
+              href="mailto:hello@alfi.ai" 
+              className="inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              hello@alfi.ai
+            </a>
           </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="border-t border-border bg-card/30">
-        <div className="container mx-auto px-4 py-12">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                  <Zap className="h-5 w-5 text-white" />
-                </div>
-                <span className="text-xl font-bold text-foreground">Alfi</span>
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center space-x-2">
+              <div className="w-6 h-6 bg-gradient-primary rounded-lg flex items-center justify-center">
+                <Zap className="h-4 w-4 text-white" />
               </div>
-              <p className="text-muted-foreground text-sm">
-                Your AI Bill Butler for automated payment processing.
-              </p>
+              <span className="font-bold text-foreground">Alfi</span>
+              <span className="text-muted-foreground text-sm">Your AI Bill Butler</span>
             </div>
-            <div className="space-y-4">
-              <h4 className="font-semibold text-foreground">Product</h4>
-              <div className="space-y-2 text-sm">
-                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Features</a>
-                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
-                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Security</a>
-              </div>
+            <div className="text-center text-sm text-muted-foreground">
+              <p>&copy; 2024 Alfi. All rights reserved.</p>
             </div>
-            <div className="space-y-4">
-              <h4 className="font-semibold text-foreground">Company</h4>
-              <div className="space-y-2 text-sm">
-                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">About</a>
-                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Blog</a>
-                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Careers</a>
-              </div>
-            </div>
-            <div className="space-y-4">
-              <h4 className="font-semibold text-foreground">Support</h4>
-              <div className="space-y-2 text-sm">
-                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Help Center</a>
-                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Contact</a>
-                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">API Docs</a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-border mt-12 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 Alfi. All rights reserved.</p>
           </div>
         </div>
       </footer>
