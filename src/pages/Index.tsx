@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 import { 
   Clock, 
   DollarSign, 
@@ -10,9 +12,59 @@ import {
   TrendingUp,
   ArrowRight
 } from "lucide-react";
-import heroIllustration from "@/assets/hero-illustration.png";
+import alfiLogo from "@/assets/alfi-logo.png";
 
 const Index = () => {
+  const { toast } = useToast();
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleWaitlistSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      toast({
+        title: "Error",
+        description: "Please enter your email address",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("https://hook.us2.make.com/8rpk55qtdgcznso684i8aufgo9qfb98m", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify({
+          email: email,
+          timestamp: new Date().toISOString(),
+          source: "waitlist",
+        }),
+      });
+
+      toast({
+        title: "Success!",
+        description: "You've been added to our waitlist. We'll be in touch soon!",
+      });
+      
+      setEmail("");
+    } catch (error) {
+      console.error("Error submitting to waitlist:", error);
+      toast({
+        title: "Error",
+        description: "Failed to join waitlist. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const problems = [
     {
       icon: <Clock className="h-6 w-6 text-destructive" />,
@@ -35,11 +87,13 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-subtle">
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
-        <nav className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <Zap className="h-5 w-5 text-white" />
-            </div>
+        <nav className="flex items-center justify-center">
+          <div className="flex items-center space-x-3">
+            <img 
+              src={alfiLogo} 
+              alt="Alfi Logo" 
+              className="h-8 w-auto"
+            />
             <span className="text-xl font-bold text-foreground">Alfi</span>
           </div>
         </nav>
@@ -47,59 +101,57 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <Badge variant="secondary" className="text-primary">
-                Coming Soon
-              </Badge>
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-foreground">
-                Your AI Bill 
-                <span className="bg-gradient-primary bg-clip-text text-transparent"> Butler</span>
-              </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
-                Automatically handle every irregular bill from email or photo. 
-                Never miss a payment or waste time on manual processing again.
-              </p>
-            </div>
-            
-            <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row gap-3 max-w-md">
-                <Input 
-                  type="email" 
-                  placeholder="Enter your email" 
-                  className="flex-1"
-                />
-                <Button variant="hero" className="flex items-center">
-                  Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Be the first to know when we launch. No spam, ever.
-              </p>
-            </div>
-
-            <div className="pt-4">
-              <p className="text-sm text-muted-foreground mb-2">
-                Want to learn more? Reach out directly:
-              </p>
-              <a 
-                href="mailto:hello@alfi.ai" 
-                className="inline-flex items-center text-primary hover:text-primary-glow transition-colors"
-              >
-                <Mail className="h-4 w-4 mr-2" />
-                hello@alfi.ai
-              </a>
-            </div>
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <div className="space-y-4">
+            <Badge variant="secondary" className="text-primary">
+              Coming Soon
+            </Badge>
+            <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-foreground">
+              Your AI Bill 
+              <span className="bg-gradient-primary bg-clip-text text-transparent"> Butler</span>
+            </h1>
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Automatically handle every irregular bill from email or photo. 
+              Never miss a payment or waste time on manual processing again.
+            </p>
           </div>
+          
+          <form onSubmit={handleWaitlistSubmit} className="space-y-4">
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <Input 
+                type="email" 
+                placeholder="Enter your email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1"
+                disabled={isLoading}
+              />
+              <Button 
+                type="submit" 
+                variant="hero" 
+                className="flex items-center"
+                disabled={isLoading}
+              >
+                {isLoading ? "Joining..." : "Join Waitlist"} 
+                {!isLoading && <ArrowRight className="ml-2 h-4 w-4" />}
+              </Button>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Be the first to know when we launch. No spam, ever.
+            </p>
+          </form>
 
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-hero rounded-3xl blur-3xl opacity-30"></div>
-            <img 
-              src={heroIllustration} 
-              alt="AI Bill Butler automation concept" 
-              className="relative z-10 w-full h-auto rounded-2xl shadow-xl"
-            />
+          <div className="pt-4">
+            <p className="text-sm text-muted-foreground mb-2">
+              Want to learn more? Reach out directly:
+            </p>
+            <a 
+              href="mailto:hello@alfi.ai" 
+              className="inline-flex items-center text-primary hover:text-primary-glow transition-colors"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              hello@alfi.ai
+            </a>
           </div>
         </div>
       </section>
@@ -175,16 +227,25 @@ const Index = () => {
           <p className="text-lg text-muted-foreground">
             Join our waitlist to be notified when Alfi launches.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <form onSubmit={handleWaitlistSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <Input 
               type="email" 
               placeholder="Enter your email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="flex-1"
+              disabled={isLoading}
             />
-            <Button variant="premium" className="flex items-center">
-              Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
+            <Button 
+              type="submit" 
+              variant="premium" 
+              className="flex items-center"
+              disabled={isLoading}
+            >
+              {isLoading ? "Joining..." : "Join Waitlist"} 
+              {!isLoading && <ArrowRight className="ml-2 h-4 w-4" />}
             </Button>
-          </div>
+          </form>
           <div className="pt-4">
             <p className="text-muted-foreground text-sm mb-2">
               Questions? We'd love to hear from you:
@@ -204,10 +265,12 @@ const Index = () => {
       <footer className="border-t border-border bg-card/30">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-6 h-6 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <Zap className="h-4 w-4 text-white" />
-              </div>
+            <div className="flex items-center space-x-3">
+              <img 
+                src={alfiLogo} 
+                alt="Alfi Logo" 
+                className="h-6 w-auto"
+              />
               <span className="font-bold text-foreground">Alfi</span>
               <span className="text-muted-foreground text-sm">Your AI Bill Butler</span>
             </div>
