@@ -26,7 +26,7 @@ npm run lint
 ```
 
 ### Package Manager
-This project uses npm with a lock file. Always use `npm install` rather than other package managers to maintain consistency.
+This project uses **npm exclusively**. The original bun.lockb file has been removed to avoid deployment conflicts. Always use `npm install` and never use other package managers to maintain consistency.
 
 ## Architecture Overview
 
@@ -92,7 +92,7 @@ src/
 ### Special Considerations
 - This is a **Lovable.dev project** - changes can be made via their platform
 - The project includes `lovable-tagger` for development component identification
-- Uses both Bun lockfile and npm lockfile (prefer npm for consistency)
+- **npm only**: bun.lockb was removed to ensure consistent deployments
 - Email integration is hardcoded to Make.com webhook URL
 
 ## Project-Specific Context
