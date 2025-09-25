@@ -255,29 +255,6 @@ const Index = () => {
               {!isLoading && <ArrowRight className="ml-2 h-4 w-4" />}
             </Button>
           </form>
-          {/* Alumni Section */}
-          <div className="pt-4">
-            <p className="text-muted-foreground text-sm mb-6">
-              Built by Alumni of:
-            </p>
-            <div className="flex items-center justify-center gap-8 opacity-60">
-              <img 
-                src={googleLogo} 
-                alt="Google" 
-                className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
-              />
-              <img 
-                src={openaiLogo} 
-                alt="OpenAI" 
-                className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
-              />
-              <img 
-                src={paypalLogo} 
-                alt="PayPal" 
-                className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
-              />
-            </div>
-          </div>
         </div>
       </section>
 
@@ -286,16 +263,11 @@ const Index = () => {
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center space-x-3">
-              <img 
-                src={alfiLogo} 
-                alt="Alfi Logo" 
-                className="h-6 w-auto"
-              />
               <span className="font-bold text-foreground">Alfi</span>
               <span className="text-muted-foreground text-sm">Your AI Bill Butler</span>
             </div>
             <div className="text-center text-sm text-muted-foreground">
-              <p>&copy; 2024 Alfi. All rights reserved.</p>
+              <p>&copy; 2025 Repi. All rights reserved.</p>
             </div>
           </div>
         </div>
