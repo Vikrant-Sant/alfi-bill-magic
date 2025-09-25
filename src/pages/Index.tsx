@@ -13,6 +13,9 @@ import {
   ArrowRight
 } from "lucide-react";
 import alfiLogo from "@/assets/alfi-logo.png";
+import googleLogo from "@/assets/IMG_6023.png";
+import openaiLogo from "@/assets/ChatGPT Image Sep 25, 2025, 03_22_22 PM.png";
+import paypalLogo from "@/assets/pp-full-purple (1).svg";
 
 const Index = () => {
   const { toast } = useToast();
@@ -136,17 +139,28 @@ const Index = () => {
             </p>
           </form>
 
-          <div className="pt-4">
-            <p className="text-sm text-muted-foreground mb-2">
-              Want to learn more? Reach out directly:
+          {/* Alumni Section */}
+          <div className="pt-8">
+            <p className="text-sm text-muted-foreground mb-6">
+              Built by Alumni of:
             </p>
-            <a 
-              href="mailto:hello@alfi.ai" 
-              className="inline-flex items-center text-primary hover:text-primary-glow transition-colors"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              hello@alfi.ai
-            </a>
+            <div className="flex items-center justify-center gap-8 opacity-60">
+              <img 
+                src={googleLogo} 
+                alt="Google" 
+                className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+              />
+              <img 
+                src={openaiLogo} 
+                alt="OpenAI" 
+                className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+              />
+              <img 
+                src={paypalLogo} 
+                alt="PayPal" 
+                className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -241,17 +255,28 @@ const Index = () => {
               {!isLoading && <ArrowRight className="ml-2 h-4 w-4" />}
             </Button>
           </form>
+          {/* Alumni Section */}
           <div className="pt-4">
-            <p className="text-muted-foreground text-sm mb-2">
-              Questions? We'd love to hear from you:
+            <p className="text-muted-foreground text-sm mb-6">
+              Built by Alumni of:
             </p>
-            <a 
-              href="mailto:hello@alfi.ai" 
-              className="inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              hello@alfi.ai
-            </a>
+            <div className="flex items-center justify-center gap-8 opacity-60">
+              <img 
+                src={googleLogo} 
+                alt="Google" 
+                className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+              />
+              <img 
+                src={openaiLogo} 
+                alt="OpenAI" 
+                className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+              />
+              <img 
+                src={paypalLogo} 
+                alt="PayPal" 
+                className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+              />
+            </div>
           </div>
         </div>
       </section>
