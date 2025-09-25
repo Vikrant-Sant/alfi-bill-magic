@@ -88,12 +88,7 @@ const Index = () => {
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <nav className="flex items-center justify-center">
-          <div className="flex items-center space-x-3">
-            <img 
-              src={alfiLogo} 
-              alt="Alfi Logo" 
-              className="h-8 w-auto"
-            />
+          <div className="flex items-center">
             <span className="text-xl font-bold text-foreground">Alfi</span>
           </div>
         </nav>
