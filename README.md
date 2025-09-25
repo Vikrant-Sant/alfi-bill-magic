@@ -1,22 +1,17 @@
-# Welcome to your Lovable project
+# Alfi - Your AI Bill Butler
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/a7c9d04a-d127-4b89-93ac-dd66eba17d13
+Alfi is an AI-powered bill payment automation service that automatically handles irregular bills from email or photo. Never miss a payment or waste time on manual processing again.
 
-## How can I edit this code?
+**Live Site**: [Coming Soon - Join Waitlist]
+**Repository**: https://github.com/Vikrant-Sant/alfi-bill-magic
 
-There are several ways of editing your application.
+## Development Setup
 
-**Use Lovable**
+**Local Development**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a7c9d04a-d127-4b89-93ac-dd66eba17d13) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+To run this project locally, you can clone this repo and push changes.
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -60,14 +55,15 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## How to deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/a7c9d04a-d127-4b89-93ac-dd66eba17d13) and click on Share -> Publish.
+This project is deployed using Cloudflare Pages:
 
-## Can I connect a custom domain to my Lovable project?
+1. Push changes to the main branch
+2. Cloudflare Pages automatically builds and deploys
+3. Build command: `npm run build`
+4. Output directory: `dist`
 
-Yes, you can!
+## Contact
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+For questions or support, reach out to: hello@alfi.ai

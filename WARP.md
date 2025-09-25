@@ -90,8 +90,8 @@ src/
 - **Tailwind**: Extensive custom theme with design tokens
 
 ### Special Considerations
-- This is a **Lovable.dev project** - changes can be made via their platform
-- The project includes `lovable-tagger` for development component identification
+- Originally created with Lovable.dev but now independently maintained
+- The project includes `lovable-tagger` for development component identification (legacy)
 - **npm only**: bun.lockb was removed to ensure consistent deployments
 - Email integration is hardcoded to Make.com webhook URL
 
@@ -116,5 +116,5 @@ Alfi is an "AI Bill Butler" service that automates irregular bill payments. The 
 - ESLint for code quality checks
 
 ### Deployment
-- Designed for Lovable.dev's deployment system
+- Deployed via Cloudflare Pages
 - Can also be deployed as standard Vite SPA to any static hosting
